@@ -12,7 +12,7 @@ let mir = document.querySelector('.form__card-info .mir')
 
 const validCreditcard = cardnumb => {
     const ccErrors = [];
-    ccErrors[0] = "Неизвестный тип карты";
+    ccErrors[0] = "Некорректный номер карты";
     ccErrors[1] = "Номер карты не указан";
     ccErrors[2] = "Номер кредитной карты указан в недопустимом формате";
     ccErrors[3] = "Номер кредитной карты недействителен";
@@ -161,43 +161,57 @@ btn.onclick = function (){
         console.log(validCreditcard(card.value));
         out.innerHTML = validCreditcard(card.value).message;
         out.classList.add('message--active')
-        card.style.borderColor = 'red';
+        card.style.borderColor = '#FF7575';
+        card.style.backgroundColor = '#FFEDED';
         for (let i = 0; i < lables.length; i++){
-            lables[0].style.color = 'red';
+            lables[0].style.color = '#FF7575';
         }
     }
     else if(date.value === ''){
-        out.innerHTML = 'Не указана дата';
+        out.innerHTML = 'Некорректная дата';
         out.classList.add('message--active')
         card.style.borderColor = '#E2E2E2';
-        date.style.borderColor = 'red';
+        date.style.backgroundColor = '#FFEDED';
+        date.style.borderColor = '#FF7575';
         for (let i = 0; i < lables.length; i++){
             lables[0].style.color = '#E2E2E2';
-            lables[1].style.color = 'red';
+            lables[1].style.color = '#FF7575';
+        }
+    }
+    else if(date.value.startsWith('13')){
+        out.innerHTML = 'Некорректная дата';
+        out.classList.add('message--active')
+        card.style.borderColor = '#E2E2E2';
+        date.style.backgroundColor = '#FFEDED';
+        date.style.borderColor = '#FF7575';
+        date.style.color = '#FF7575';
+        for (let i = 0; i < lables.length; i++){
+            lables[0].style.color = '#E2E2E2';
+            lables[1].style.color = '#FF7575';
         }
     }
     else if(cvv.value === ''){
-        out.innerHTML = 'Не указан CVV';
+        out.innerHTML = 'Некорректный CVV';
         card.style.borderColor = '#E2E2E2';
         date.style.borderColor = '#E2E2E2';
-        cvv.style.borderColor = 'red';
+        cvv.style.borderColor = '#FF7575';
         for (let i = 0; i < lables.length; i++){
             lables[0].style.color = '#E2E2E2';
             lables[1].style.color = '#E2E2E2';
-            lables[2].style.color = 'red';
+            lables[2].style.color = '#FF7575';
         }
     }
     else if(email.value === ''){
-        out.innerHTML = 'Не указан email';
+        out.innerHTML = 'Некорректная почта';
         card.style.borderColor = '#E2E2E2';
         date.style.borderColor = '#E2E2E2';
         cvv.style.borderColor = '#E2E2E2';
-        email.style.borderColor = 'red';
+        email.style.borderColor = '#FF7575';
         for (let i = 0; i < lables.length; i++){
             lables[0].style.color = '#E2E2E2';
             lables[1].style.color = '#E2E2E2';
             lables[2].style.color = '#E2E2E2';
-            lables[3].style.color = 'red';
+            lables[3].style.color = '#FF7575';
         }
     }
     else{
